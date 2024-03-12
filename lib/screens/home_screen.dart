@@ -43,31 +43,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Berita"),
+        title: const Text("BERITA"),
+        backgroundColor: Colors.blue,
+        titleTextStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+        centerTitle: true,
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: _berita.length,
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemBuilder: (context, index) {
           final Berita berita = _berita[index];
-          return Card(
-            margin:
-                const EdgeInsets.only(top: 8, left: 16, right: 16, bottom: 8),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                title: Text(
-                  berita.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.justify,
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              title: Text(
+                berita.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
                 ),
-                subtitle: Text(DateFormat('dd MMMM yyyy', 'id')
-                    .format(DateTime.parse(berita.publishedAt))),
-                onTap: () async {
-                  _launchURL(berita.url);
-                },
+                textAlign: TextAlign.justify,
               ),
+              subtitle: Text(DateFormat('dd MMMM yyyy', 'id')
+                  .format(DateTime.parse(berita.publishedAt))),
+              onTap: () async {
+                _launchURL(berita.url);
+              },
             ),
           );
         },
