@@ -12,10 +12,9 @@ class Berita {
 
   factory Berita.fromJson(Map<String, dynamic> json) {
     return Berita(
-      author: json['author'] ?? '',
-      title: json['title'] ?? '',
-      url: json['url'] ?? '',
-      publishedAt: json['publishedAt'] ?? '',
-    );
+        author: json['author'] ?? '',
+        title: json['title'] ?? '',
+        url: json['url'] ?? '',
+        publishedAt: json['publishedAt'] ?? '');
   }
 }
